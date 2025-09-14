@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Your Bike | Apex Bike Rental</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background-image: url('assets/BgimgBike.jpeg'); background-size: cover; background-position: center;">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="assets/BikeRentalLogo.jpeg" alt="Logo">
+      <span>Apex Bike Rental</span>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="bikes.html">Bikes</a>
+      <a href="about.html">About</a>
+      <a href="owner.html">For Owners</a>
+    </nav>
+  </header>
+
+  <!-- Booking Form -->
+  <div class="form-container">
+    <h2>Book Your Bike</h2>
+    <form id="bookingForm">
+      <label for="bikeName">Bike:</label>
+      <input type="text" id="bikeName" name="bikeName" readonly><br>
+
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" name="fullName" required><br>
+
+      <label for="region">Region:</label>
+      <select id="region" name="region" required>
+        <option value="Delhi">Delhi</option>
+        <option value="Ladakh">Ladakh</option>
+      </select><br>
+
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" name="startDate" required><br>
+
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" name="endDate" required><br>
+
+      <button type="submit">Confirm Booking</button>
+    <script>
+  document.getElementById("bookingForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const bike = document.getElementById("bikeName").value;
+    const fullName = document.getElementById("fullName").value;
+    const region = document.getElementById("region").value;
+    const startDate = document.getElementById("startDate").value;
+    const endDate = document.getElementById("endDate").value;
+
+    // Redirect to billing.html with details in query params
+    window.location.href = `billing.html?bike=${encodeURIComponent(bike)}&fullName=${encodeURIComponent(fullName)}&region=${encodeURIComponent(region)}&startDate=${startDate}&endDate=${endDate}`;
+  });
+  const params = new URLSearchParams(window.location.search);
+document.querySelector("input[name='price']").value = params.get("price");
+
+</script>
+<input type="hidden" name="price" value="">
+
+    </form>
+  </div>
+
+  <script>
+    // Get bike name from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const bike = urlParams.get("bike");
+    if (bike) {
+      document.getElementById("bikeName").value = bike;
+    }
+
+    // Handle form submission (for now just alert)
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("✅ Booking confirmed for " + document.getElementById("bikeName").value);
+    });
+  </script>
+
+</body>
+</html>

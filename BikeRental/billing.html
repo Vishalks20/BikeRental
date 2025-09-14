@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Billing - Apex Bike Rental</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .billing-box {
+      max-width: 500px;
+      margin: 100px auto;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.9); /* Light transparent box */
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      color: #222; /* Dark text */
+      font-family: Arial, sans-serif;
+    }
+    .billing-box h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .billing-box button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background: #e63946;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .billing-box button:hover {
+      background: #c92834;
+    }
+    .summary {
+      background: #f1f1f1;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+    #confirmationMsg {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body style="background-image: url('assets/BgimgBike.jpeg'); background-size: cover;">
+
+<header class="navbar">
+  <a href="index.html" class="logo">
+    <img src="assets/BikeRentalLogo.jpeg" alt="Logo">
+    <span>Apex Bike Rental</span>
+  </a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="bikes.html">Bikes</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
+
+<div class="billing-box">
+  <h2>Booking Summary</h2>
+  <div class="summary" id="bookingSummary"></div>
+
+  <button onclick="showPayment()">Proceed to Payment</button>
+
+  <div id="paymentSection" style="display:none; margin-top:20px;">
+    <h3>Payment</h3>
+    <form id="paymentForm">
+      <input type="text" placeholder="Cardholder Name" required><br><br>
+      <input type="text" placeholder="Card Number" required maxlength="16"><br><br>
+      <input type="text" placeholder="MM/YY" required maxlength="5"><br><br>
+      <input type="text" placeholder="CVV" required maxlength="3"><br><br>
+      <button type="submit">Pay Now</button>
+    </form>
+  </div>
+
+  <p id="confirmationMsg" style="display:none;">✅ Payment Successful! Your booking is confirmed.</p>
+</div>
+
+<script>
+  // Get booking details from URL
+  const params = new URLSearchParams(window.location.search);
+  const bike = params.get("bike");
+  const fullName = params.get("fullName");
+  const region = params.get("region");
+  const startDate = new Date(params.get("startDate"));
+  const endDate = new Date(params.get("endDate"));
+
+  const perDayPrice = 1500;
+  let days = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+  if (days < 1) days = 1; // At least 1 day booking
+
+  const total = days * perDayPrice;
+
+  document.getElementById("bookingSummary").innerHTML = `
+    <strong>Name:</strong> ${fullName}<br>
+    <strong>Bike:</strong> ${bike}<br>
+    <strong>Region:</strong> ${region}<br>
+    <strong>From:</strong> ${startDate.toDateString()}<br>
+    <strong>To:</strong> ${endDate.toDateString()}<br>
+    <strong>Duration:</strong> ${days} day(s)<br>
+    <strong>Charges:</strong> ₹${perDayPrice} per day<br>
+    <strong>Total Amount:</strong> <span style="color:#e63946; font-size:18px;">₹${total}</span>
+  `;
+
+  function showPayment() {
+    document.getElementById("paymentSection").style.display = "block";
+  }
+
+  document.getElementById("paymentForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    document.getElementById("paymentSection").style.display = "none";
+    document.getElementById("confirmationMsg").style.display = "block";
+  });
+</script>
+
+</body>
+</html>

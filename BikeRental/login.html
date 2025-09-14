@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Apex Bike Rental</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background-image: url('assets/BgimgBike.jpeg'); background-size: cover; background-position: center;">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="assets/BikeRentalLogo.jpeg" alt="Logo">
+      <span>Apex Bike Rental</span>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="bikes.html">Bikes</a>
+      <a href="about.html">About</a>
+      <a href="owner.html">For Owners</a>
+    </nav>
+  </header>
+
+  <!-- Login Card -->
+  <div class="form-container">
+    <div class="form-card">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Login to continue</p>
+
+      <form action="login.php" method="POST">
+  <input type="email" name="loginEmail" placeholder="Email" required><br>
+  <input type="password" name="loginPassword" placeholder="Password" required minlength="6"><br>
+  <button type="submit">Login</button>
+</form>
+
+
+      <p class="switch">Don’t have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+  </div>
+
+</body>
+</html>

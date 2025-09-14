@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>List Your Bike - Apex Bike Rental</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body style="background-image: url('assets/BgimgBike.jpeg');">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <img src="assets/BikeRentalLogo.jpeg" alt="Logo">
+      <span>Apex Bike Rental</span>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="bikes.html">Bikes</a>
+      <a href="about.html">About</a>
+      <a href="owner.html">For Owners</a>
+    </nav>
+  </header>
+
+  <!-- Owner Form -->
+  <div class="form-container">
+    <h2>List Your Bike</h2>
+    <form id="ownerForm">
+      <input type="text" id="ownerName" placeholder="Owner Name" required><br>
+      <input type="email" id="ownerEmail" placeholder="Owner Email" required><br>
+      <input type="text" id="bikeName" placeholder="Bike Name (e.g., Royal Enfield)" required><br>
+      <input type="text" id="bikeType" placeholder="Bike Type (e.g., Scooter, Sports, Cruiser)" required><br>
+      <input type="text" id="bikeLocation" placeholder="City/Region (e.g., Delhi, Ladakh)" required><br>
+      <input type="number" id="bikePrice" placeholder="Price per Day (₹)" required><br>
+      <button type="submit">Submit Bike</button>
+    </form>
+
+    <p id="ownerMsg"></p>
+  </div>
+
+  <script>
+    document.getElementById("ownerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const ownerName = document.getElementById("ownerName").value;
+      const ownerEmail = document.getElementById("ownerEmail").value;
+      const bikeName = document.getElementById("bikeName").value;
+      const bikeType = document.getElementById("bikeType").value;
+      const bikeLocation = document.getElementById("bikeLocation").value;
+      const bikePrice = document.getElementById("bikePrice").value;
+
+      // In future, send to backend (PHP + MySQL)
+      // For now, show confirmation
+      document.getElementById("ownerMsg").innerHTML = `
+        ✅ Thank you, ${ownerName}!<br>
+        Your bike <strong>${bikeName}</strong> in <strong>${bikeLocation}</strong> is listed for ₹${bikePrice}/day.
+      `;
+
+      document.getElementById("ownerForm").reset();
+    });
+  </script>
+
+</body>
+</html>
