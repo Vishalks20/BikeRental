@@ -4,79 +4,98 @@
   <meta charset="UTF-8">
   <title>Book Your Bike | Apex Bike Rental</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="background-image: url('assets/BgimgBike.jpeg'); background-size: cover; background-position: center;">
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <a href="index.html" class="logo">
-      <img src="assets/BikeRentalLogo.jpeg" alt="Logo">
-      <span>Apex Bike Rental</span>
-    </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="bikes.html">Bikes</a>
-      <a href="about.html">About</a>
-      <a href="owner.html">For Owners</a>
-    </nav>
+  <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/BikeRentalLogo.jpeg" alt="Logo" width="40" height="40" class="me-2 rounded-circle">
+        <span>Apex Bike Rental</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="bikes.html">Bikes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="owner.html">For Owners</a>
+          </li>
+        </ul>
+        <a href="login.html" class="btn btn-danger">Login</a>
+      </div>
+    </div>
   </header>
 
-  <!-- Booking Form -->
-  <div class="form-container">
-    <h2>Book Your Bike</h2>
-    <form id="bookingForm">
-      <label for="bikeName">Bike:</label>
-      <input type="text" id="bikeName" name="bikeName" readonly><br>
-
-      <label for="fullName">Full Name:</label>
-      <input type="text" id="fullName" name="fullName" required><br>
-
-      <label for="region">Region:</label>
-      <select id="region" name="region" required>
-        <option value="Delhi">Delhi</option>
-        <option value="Ladakh">Ladakh</option>
-      </select><br>
-
-      <label for="startDate">Start Date:</label>
-      <input type="date" id="startDate" name="startDate" required><br>
-
-      <label for="endDate">End Date:</label>
-      <input type="date" id="endDate" name="endDate" required><br>
-
-      <button type="submit">Confirm Booking</button>
-    <script>
-  document.getElementById("bookingForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const bike = document.getElementById("bikeName").value;
-    const fullName = document.getElementById("fullName").value;
-    const region = document.getElementById("region").value;
-    const startDate = document.getElementById("startDate").value;
-    const endDate = document.getElementById("endDate").value;
-
-    // Redirect to billing.html with details in query params
-    window.location.href = `billing.html?bike=${encodeURIComponent(bike)}&fullName=${encodeURIComponent(fullName)}&region=${encodeURIComponent(region)}&startDate=${startDate}&endDate=${endDate}`;
-  });
-  const params = new URLSearchParams(window.location.search);
-document.querySelector("input[name='price']").value = params.get("price");
-
-</script>
-<input type="hidden" name="price" value="">
-
-    </form>
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+      <div class="card-body">
+        <h2 class="card-title text-center mb-4">Book Your Bike</h2>
+        <form id="bookingForm">
+          <div class="mb-3">
+            <label for="bikeName" class="form-label">Bike:</label>
+            <input type="text" class="form-control" id="bikeName" name="bikeName" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name:</label>
+            <input type="text" class="form-control" id="fullName" name="fullName" required>
+          </div>
+          <div class="mb-3">
+            <label for="region" class="form-label">Region:</label>
+            <select class="form-select" id="region" name="region" required>
+              <option value="Delhi">Delhi</option>
+              <option value="Ladakh">Ladakh</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="startDate" class="form-label">Start Date:</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" required>
+          </div>
+          <div class="mb-3">
+            <label for="endDate" class="form-label">End Date:</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" required>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Confirm Booking</button>
+          </div>
+          <input type="hidden" name="price" value="">
+        </form>
+      </div>
+    </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // Get bike name from URL
     const urlParams = new URLSearchParams(window.location.search);
     const bike = urlParams.get("bike");
     if (bike) {
       document.getElementById("bikeName").value = bike;
     }
+    const price = urlParams.get("price");
+    if (price) {
+      document.querySelector("input[name='price']").value = price;
+    }
 
-    // Handle form submission (for now just alert)
     document.getElementById("bookingForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      alert("✅ Booking confirmed for " + document.getElementById("bikeName").value);
+      const bike = document.getElementById("bikeName").value;
+      const fullName = document.getElementById("fullName").value;
+      const region = document.getElementById("region").value;
+      const startDate = document.getElementById("startDate").value;
+      const endDate = document.getElementById("endDate").value;
+      const price = document.querySelector("input[name='price']").value;
+
+      window.location.href = `billing.html?bike=${encodeURIComponent(bike)}&fullName=${encodeURIComponent(fullName)}&region=${encodeURIComponent(region)}&startDate=${startDate}&endDate=${endDate}&price=${price}`;
     });
   </script>
 

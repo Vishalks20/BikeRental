@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost:3307";
-$username = "root";
-$password = "Manager";  // your MySQL password
-$dbname = "BikeRental";
+$servername = "localhost";
+$username = "root"; // Default for XAMPP/WAMP
+$password = "";     // Default for XAMPP/WAMP
+$dbname = "apex_bike_rental";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -4,98 +4,148 @@
   <meta charset="UTF-8">
   <title>Available Bikes | Apex Bike Rental</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="background-image: url('assets/BgimgBike.jpeg'); background-size: cover; background-position: center;">
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <a href="index.html" class="logo">
-      <img src="assets/BikeRentalLogo.jpeg" alt="Logo">
-      <span>Apex Bike Rental</span>
-    </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="bikes.html" class="active">Bikes</a>
-      <a href="about.html">About</a>
-      <a href="owner.html">For Owners</a>
-    </nav>
+  <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/BikeRentalLogo.jpeg" alt="Logo" width="40" height="40" class="me-2 rounded-circle">
+        <span>Apex Bike Rental</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="bikes.html">Bikes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="owner.html">For Owners</a>
+          </li>
+        </ul>
+        <a href="login.html" class="btn btn-danger">Login</a>
+      </div>
+    </div>
   </header>
 
-  <main class="bike-section">
-
-    <!-- Delhi Region -->
-    <h2 class="region-title">🚩 Delhi Region</h2>
-    <div class="bike-grid">
-      <div class="bike-card">
-        <img src="assets/bike1.jpeg" alt="Royal Enfield Classic">
-        <h3>Royal Enfield Classic 350</h3>
-        <p>₹900/day</p>
-        <button onclick="window.location.href='booking.html?bike=Royal Enfield Classic 350'">Book Now</button>
-
+  <main class="container my-5">
+    <h2 class="text-center text-white mb-4">🚩 Delhi Region</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <img src="assets/bike1.jpeg" class="card-img-top" alt="Royal Enfield Classic">
+          <div class="card-body text-center">
+            <h5 class="card-title">Royal Enfield Classic 350</h5>
+            <p class="card-text text-muted">₹900/day</p>
+            <a href="booking.html?bike=Royal Enfield Classic 350" class="btn btn-danger w-100">Book Now</a>
+          </div>
+        </div>
       </div>
-
-      <div class="bike-card">
-        <img src="assets/bike2.jpeg" alt="Honda Activa">
-        <h3>Honda Activa 125</h3>
-        <p>₹500/day</p>
-        <button onclick="window.location.href='booking.html?bike=Honda Activa 125'">Book Now</button>
-
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <img src="assets/bike2.jpeg" class="card-img-top" alt="Honda Activa">
+          <div class="card-body text-center">
+            <h5 class="card-title">Honda Activa 125</h5>
+            <p class="card-text text-muted">₹500/day</p>
+            <a href="booking.html?bike=Honda Activa 125" class="btn btn-danger w-100">Book Now</a>
+          </div>
+        </div>
       </div>
-
-      <div class="bike-card">
-        <img src="assets/bike3.jpeg" alt="Bajaj Pulsar">
-        <h3>Bajaj Pulsar 220F</h3>
-        <p>₹700/day</p>
-        <button onclick="window.location.href='booking.html?bike=Bajaj Pulsar 220F'">Book Now</button>
-
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <img src="assets/bike3.jpeg" class="card-img-top" alt="Bajaj Pulsar">
+          <div class="card-body text-center">
+            <h5 class="card-title">Bajaj Pulsar 220F</h5>
+            <p class="card-text text-muted">₹700/day</p>
+            <a href="booking.html?bike=Bajaj Pulsar 220F" class="btn btn-danger w-100">Book Now</a>
+          </div>
+        </div>
       </div>
-
-      <div class="bike-card">
-        <img src="assets/bike4.jpeg" alt="Yamaha FZ">
-        <h3>Yamaha FZ-S</h3>
-        <p>₹650/day</p>
-       <button onclick="window.location.href='booking.html?bike=Yamaha FZ-S'">Book Now</button>
-
-      </div>
-    </div>
-
-    <!-- Ladakh Region -->
-    <h2 class="region-title">⛰️ Ladakh Region</h2>
-    <div class="bike-grid">
-      <div class="bike-card">
-        <img src="assets/bike5.jpeg" alt="Royal Enfield Himalayan">
-        <h3>Royal Enfield Himalayan</h3>
-        <p>₹1200/day</p>
-        <button onclick="window.location.href='booking.html?bike=Royal Enfield Himalayan'">Book Now</button>
-
-      </div>
-
-      <div class="bike-card">
-        <img src="assets/bike6.jpeg" alt="KTM Adventure">
-        <h3>KTM Adventure 390</h3>
-        <p>₹1500/day</p>
-        <button onclick="window.location.href='booking.html?bike=KTM Adventure 390'">Book Now</button>
-
-      </div>
-
-      <div class="bike-card">
-        <img src="assets/bike7.jpeg" alt="Bullet 500">
-        <h3>Royal Enfield Bullet 500</h3>
-        <p>₹1300/day</p>
-        <button onclick="window.location.href='booking.html?bike=Royal Enfield Bullet 500'">Book Now</button>
-
-      </div>
-
-      <div class="bike-card">
-        <img src="assets/bike8.jpeg" alt="BMW GS310">
-        <h3>BMW GS 310</h3>
-        <p>₹1800/day</p>
-        <button onclick="window.location.href='booking.html?bike=BMW GS 310'">Book Now</button>
-
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <img src="assets/bike4.jpeg" class="card-img-top" alt="Yamaha FZ">
+          <div class="card-body text-center">
+            <h5 class="card-title">Yamaha FZ-S</h5>
+            <p class="card-text text-muted">₹650/day</p>
+            <a href="booking.html?bike=Yamaha FZ-S" class="btn btn-danger w-100">Book Now</a>
+          </div>
+        </div>
       </div>
     </div>
 
+    <h2 class="text-center text-white mt-5 mb-4">⛰️ Ladakh Region</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <img src="assets/bike5.jpeg" class="card-img-top" alt="Royal Enfield Himalayan">
+          <div class="card-body text-center">
+            <h5 class="card-title">Royal Enfield Himalayan</h5>
+            <p class="card-text text-muted">₹1200/day</p>
+            <a href="booking.html?bike=Royal Enfield Himalayan" class="btn btn-danger w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <img src="assets/bike6.jpeg" class="card-img-top" alt="KTM Adventure">
+          <div class="card-body text-center">
+            <h5 class="card-title">KTM Adventure 390</h5>
+            <p class="card-text text-muted">₹1500/day</p>
+            <a href="booking.html?bike=KTM Adventure 390" class="btn btn-danger w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <img src="assets/bike7.jpeg" class="card-img-top" alt="Bullet 500">
+          <div class="card-body text-center">
+            <h5 class="card-title">Royal Enfield Bullet 500</h5>
+            <p class="card-text text-muted">₹1300/day</p>
+            <a href="booking.html?bike=Royal Enfield Bullet 500" class="btn btn-danger w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="card h-100 shadow-sm">
+          <img src="assets/bike8.jpeg" class="card-img-top" alt="BMW GS310">
+          <div class="card-body text-center">
+            <h5 class="card-title">BMW GS 310</h5>
+            <p class="card-text text-muted">₹1800/day</p>
+            <a href="booking.html?bike=BMW GS 310" class="btn btn-danger w-100">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('query');
 
+    if (searchQuery) {
+      const allBikeCards = document.querySelectorAll('.bike-card');
+      const searchTerm = searchQuery.toLowerCase();
+
+      allBikeCards.forEach(card => {
+        const bikeName = card.querySelector('h3').textContent.toLowerCase();
+        if (bikeName.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  });
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

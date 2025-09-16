@@ -4,32 +4,46 @@
   <meta charset="UTF-8">
   <title>Apex Bike Rental</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body style="background-image: url('assets/BgimgBike.jpeg');">
-<script src="js/app.js" defer></script>
+<body style="background-image: url('assets/BgimgBike.jpeg'); background-size: cover; background-position: center;">
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <a href="index.html" class="logo">
-      <img src="assets/BikeRentalLogo.jpeg" alt="Logo">
-      <span>Apex Bike Rental</span>
-    </a>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="bikes.html">Bikes</a>
-      <a href="about.html">About</a>
-      <a href="owner.html">For Owners</a>
-    </nav>
-    <a href="login.html" class="login-btn">Login</a>
+  <header class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="assets/BikeRentalLogo.jpeg" alt="Logo" width="40" height="40" class="me-2 rounded-circle">
+        <span>Apex Bike Rental</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="bikes.html">Bikes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="owner.html">For Owners</a>
+          </li>
+        </ul>
+        <a href="login.html" class="btn btn-danger">Login</a>
+      </div>
+    </div>
   </header>
 
-  <!-- Landing Section -->
-  <section class="landing">
-    <form class="search-box">
-      <input type="text" placeholder="Search bikes">
-      <button type="submit">🔍</button>
+  <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <form class="d-flex p-2 bg-white rounded-pill shadow-sm" action="bikes.html" method="GET">
+      <input class="form-control me-2 border-0" type="search" name="query" placeholder="Click 🔍 for available bikes" aria-label="Search">
+      <button class="btn btn-outline-danger border-0" type="submit">🔍</button>
     </form>
-  </section>
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

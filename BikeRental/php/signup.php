@@ -1,35 +1,27 @@
 <?php
-// signup.php
-include("db_connect.php"); // Your DB connection file
+require 'db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['fullName'];
+    $fullName = $_POST['fullName'];
     $email = $_POST['signupEmail'];
-    $password = password_hash($_POST['signupPassword'], PASSWORD_DEFAULT);
-    $aadhar = $_POST['aadharNumber'];
+    $password = $_POST['signupPassword'];
 
-    // File upload handling
-    $targetDir = "uploads/";
-    if (!is_dir($targetDir)) {
-        mkdir($targetDir, 0777, true); // Create folder if not exists
-    }
-    $licenseFile = $targetDir . basename($_FILES["licenseFile"]["name"]);
+    // Hash the password for security
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    if (move_uploaded_file($_FILES["licenseFile"]["tmp_name"], $licenseFile)) {
-        // Insert into DB
-        $sql = "INSERT INTO users (name, email, password, aadhar, license_file)
-                VALUES ('$name', '$email', '$password', '$aadhar', '$licenseFile')";
+    // Prepare and bind the SQL statement to prevent SQL injection
+    $stmt = $conn->prepare("INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $fullName, $email, $hashedPassword);
 
-        if (mysqli_query($conn, $sql)) {
-            echo "✅ Signup successful! You can now login.";
-        } else {
-            echo "❌ Error: " . mysqli_error($conn);
-        }
+    if ($stmt->execute()) {
+        // Redirect to login page on success
+        header("Location: ../login.html?success=signup");
     } else {
-        echo "❌ Error uploading license file.";
+        echo "Error: " . $stmt->error;
     }
-    $sql = "INSERT INTO users (name, email, password, aadhar, license_file, status)
-        VALUES ('$name', '$email', '$password', '$aadhar', '$licenseFile', 'pending')";
 
+    $stmt->close();
 }
+
+$conn->close();
 ?>
